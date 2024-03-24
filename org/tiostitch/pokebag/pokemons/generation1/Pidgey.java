@@ -1,8 +1,8 @@
 package org.tiostitch.pokebag.pokemons.generation1;
 
 import org.tiostitch.pokebag.pokemons.IPokemon;
-import org.tiostitch.pokebag.utilities.PokeCoord;
-import org.tiostitch.pokebag.utilities.others.PokeType;
+import org.tiostitch.pokebag.utilities.others.ISpecies;
+import org.tiostitch.pokebag.utilities.others.ITypes;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,33 +15,23 @@ implements IPokemon {
     }
 
     @Override
-    public PokeCoord getSpecieCoord() {
-        return new PokeCoord("Tiny Bird", -45, 0);
+    public ISpecies getISpecie() {
+        return new ISpecies("Tiny Bird", 30, 1.9, -45, 0);
     }
 
     @Override
-    public String getPokeDexId() {
+    public String getDexId() {
         return "016";
     }
 
     @Override
-    public double getAltura() {
-        return 30;
+    public ITypes getType() {
+        return ITypes.NORMAL;
     }
 
     @Override
-    public double getPeso() {
-        return 1.9;
-    }
-
-    @Override
-    public PokeType getType() {
-        return PokeType.NORMAL;
-    }
-
-    @Override
-    public PokeType getSubType() {
-        return PokeType.FLYING;
+    public ITypes getSubType() {
+        return ITypes.FLYING;
     }
 
     @Override
@@ -55,7 +45,7 @@ implements IPokemon {
     }
 
     @Override
-    public ImageIcon getLocation() {
+    public ImageIcon getPath() {
         return new ImageIcon("src/resources/pokemons/pidgey.png");
     }
 }

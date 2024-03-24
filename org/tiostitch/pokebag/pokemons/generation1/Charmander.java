@@ -1,8 +1,8 @@
 package org.tiostitch.pokebag.pokemons.generation1;
 
 import org.tiostitch.pokebag.pokemons.IPokemon;
-import org.tiostitch.pokebag.utilities.PokeCoord;
-import org.tiostitch.pokebag.utilities.others.PokeType;
+import org.tiostitch.pokebag.utilities.others.ISpecies;
+import org.tiostitch.pokebag.utilities.others.ITypes;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,32 +15,22 @@ implements IPokemon {
     }
 
     @Override
-    public PokeCoord getSpecieCoord() {
-        return new PokeCoord("Lizard", -15, 0);
+    public ISpecies getISpecie() {
+        return new ISpecies("Lizard", 60, 8.5, -15, 0);
     }
 
     @Override
-    public String getPokeDexId() {
+    public String getDexId() {
         return "004";
     }
 
     @Override
-    public double getAltura() {
-        return 60;
+    public ITypes getType() {
+        return ITypes.FIRE;
     }
 
     @Override
-    public double getPeso() {
-        return 8.5;
-    }
-
-    @Override
-    public PokeType getType() {
-        return PokeType.FIRE;
-    }
-
-    @Override
-    public PokeType getSubType() {
+    public ITypes getSubType() {
         return null;
     }
 
@@ -55,7 +45,7 @@ implements IPokemon {
     }
 
     @Override
-    public ImageIcon getLocation() {
+    public ImageIcon getPath() {
         return new ImageIcon("src/resources/pokemons/charmander.png");
     }
 }

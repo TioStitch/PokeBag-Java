@@ -1,5 +1,6 @@
 package org.tiostitch.pokebag;
 
+import lombok.val;
 import org.tiostitch.pokebag.pokemons.IPokemon;
 import org.tiostitch.pokebag.utilities.PokeReflections;
 
@@ -13,7 +14,7 @@ public final class PokeMain
 extends JFrame {
 
     private PokeMain(IPokemon pokemon) {
-        setTitle("PokeBag Java - v0.1");
+        setTitle("PokeBag Java - v0.2");
         setSize(600, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -26,10 +27,10 @@ extends JFrame {
 
 
     public static void main(String[] args) {
-        GraphicsEnvironment gE = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        File font = new File("src/resources/fonts/Early_GameBoy.ttf");
+        val gE = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        val font = new File("src/resources/fonts/Early_GameBoy.ttf");
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, font);
+            val customFont = Font.createFont(Font.TRUETYPE_FONT, font);
             gE.registerFont(customFont);
         } catch (FontFormatException | IOException e) {
             throw new RuntimeException(e);
@@ -38,16 +39,14 @@ extends JFrame {
         System.out.println("[PokeBag] Olá, seja bem-vindo ao PokeBag!");
         System.out.println("[PokeBag] Por favor, digite o nome do Pokémon no qual deseja ver as informaçõ§es:");
 
-        final Scanner sc = new Scanner(System.in);
+        val sc = new Scanner(System.in);
+        new PokeReflections().init();
 
-        if (sc.hasNextLine()) {
-            try {
-                Object instance = PokeReflections.getReflectionClass(sc.nextLine()).getClass().newInstance();
-                new PokeMain((IPokemon) instance);
-            } catch (NullPointerException | InstantiationException | IllegalAccessException e) {
-                System.out.println("[PokeBag] Pokémon inexistente, tente novamente!");
-            }
-
+        try {
+            Object instance = new PokeReflections().getPokemonByClass(sc.nextLine()).getClass().newInstance();
+            new PokeMain((IPokemon) instance);
+        } catch (NullPointerException | InstantiationException | IllegalAccessException e) {
+            System.out.println("[PokeBag] Pokémon inexistente, tente novamente!");
         }
     }
 }

@@ -1,8 +1,9 @@
 package org.tiostitch.pokebag;
 
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.tiostitch.pokebag.pokemons.IPokemon;
-import org.tiostitch.pokebag.utilities.others.PokeType;
+import org.tiostitch.pokebag.utilities.others.ITypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,33 +13,39 @@ import java.util.ArrayList;
 public final class PokePanel
 extends JPanel {
 
-    private ImageIcon imageIcon = new ImageIcon("src/resources/SummaryScreen.png");
     private final IPokemon pokemonInfo;
+    private ImageIcon imageIcon = new ImageIcon("src/resources/SummaryScreen.png");
 
     @Override
     public void paint(Graphics graphics) {
         Graphics2D g2D = (Graphics2D) graphics;
-
-        //Limite de letras: 32 caractéres.
-        //Representação da PokeBag.
-        g2D.drawImage(imageIcon.getImage(), 0, 0, 600, 400, null);
-        g2D.drawImage(pokemonInfo.getLocation().getImage(), 60, 100, 100, 100, null);
-
-        g2D.drawImage(PokeType.getLocation(pokemonInfo.getType()).getImage(), 350, 130, 100, 40, null);
-        if (pokemonInfo.getSubType() != null) {
-            g2D.drawImage(PokeType.getLocation(pokemonInfo.getSubType()).getImage(), 450, 130, 100, 40, null);
-        }
-
         g2D.setFont(new Font("Early_GameBoy", Font.BOLD, 26));
 
+        //Cenário principal
+        g2D.drawImage(imageIcon.getImage(), 0, 0, 600, 400, null);
+        g2D.drawImage(pokemonInfo.getPath().getImage(), 60, 100, 100, 100, null);
+
+        val pokemonName = pokemonInfo.getName();
+        val pokeId = pokemonInfo.getDexId();
+
+        val specie = pokemonInfo.getISpecie();
+        val type = pokemonInfo.getType();
+        val subType = pokemonInfo.getSubType();
+
+        //Aplicaçáes
+        g2D.drawImage(ITypes.getPath(type).getImage(), 350, 130, 100, 40, null);
+        if (subType != null) {
+            g2D.drawImage(ITypes.getPath(subType).getImage(), 450, 130, 100, 40, null);
+        }
+
         g2D.setColor(new Color(200,200,160,255));
-        write3D(g2D, pokemonInfo.getPokeDexId(), 303, 75);
-        write3D(g2D, pokemonInfo.getName(), 352, 75);
+        write3D(g2D, pokeId, 303, 75);
+        write3D(g2D, pokemonName, 352, 75);
 
-        write3D(g2D, pokemonInfo.getSpecieCoord().getSpecie(), 335 + pokemonInfo.getSpecieCoord().getX(), 118);
+        write3D(g2D, specie.getSpecie(), 335 + specie.getX(), 118);
 
-        writeHeight(g2D, pokemonInfo.getAltura() + "'", 465, 205);
-        writeHeight(g2D, pokemonInfo.getPeso() + "'", 485, 243);
+        writeHeight(g2D, specie.getAltura() + "'", 465, 205);
+        writeHeight(g2D, specie.getPeso() + "'", 465, 243);
 
         ArrayList<String> description = pokemonInfo.getDescription();
         if (description.isEmpty()) return;

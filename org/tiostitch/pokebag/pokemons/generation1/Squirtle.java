@@ -1,8 +1,8 @@
 package org.tiostitch.pokebag.pokemons.generation1;
 
 import org.tiostitch.pokebag.pokemons.IPokemon;
-import org.tiostitch.pokebag.utilities.PokeCoord;
-import org.tiostitch.pokebag.utilities.others.PokeType;
+import org.tiostitch.pokebag.utilities.others.ISpecies;
+import org.tiostitch.pokebag.utilities.others.ITypes;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,32 +15,21 @@ implements IPokemon {
     }
 
     @Override
-    public PokeCoord getSpecieCoord() {
-        return new PokeCoord("Tiny Turtle", -65, 0);
+    public ISpecies getISpecie() {
+        return new ISpecies("Tiny Turtle", 50, 9, -65, 0);
     }
 
     @Override
-    public String getPokeDexId() {
+    public String getDexId() {
         return "007";
     }
-
     @Override
-    public double getAltura() {
-        return 50;
+    public ITypes getType() {
+        return ITypes.WATER;
     }
 
     @Override
-    public double getPeso() {
-        return 9;
-    }
-
-    @Override
-    public PokeType getType() {
-        return PokeType.WATER;
-    }
-
-    @Override
-    public PokeType getSubType() {
+    public ITypes getSubType() {
         return null;
     }
 
@@ -55,7 +44,7 @@ implements IPokemon {
     }
 
     @Override
-    public ImageIcon getLocation() {
+    public ImageIcon getPath() {
         return new ImageIcon("src/resources/pokemons/squirtle.png");
     }
 }
