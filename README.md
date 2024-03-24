@@ -13,3 +13,5 @@
 <img src="Images/pokecoin.png" width="35" height="35"> **O que ganhamos?**
 > Não temos afiliação com nenhuma marca oficial!
 - O projeto do **PokeBag** não visa fins lucrativos algum, pelo contrário, não temos afiliação alguma com a (**Pokemon Company**) ou com a (**Nintendo**), nosso projeto é totalmente aberto e sem nenhum ganho que não seja de conhecimento de nossa parte.
+
+> CÓDIGO NÃO POLÍDO! (CODE NOT POLISHED)!
