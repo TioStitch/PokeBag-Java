@@ -3,3 +3,4 @@
 
 <img src="Images/pikachu.png" width="50" height="50"> **O que é o PokeBag?**
 > O código fonte do PokeBag pode ser encontrado neste repositório, assim como a sua jar que pode ser manualmente utilizada em quaisquers dispositivos que contenham o (Java JRE) 8 ou afins.
+- O **PokeBag** é um projeto experimental que tenta recriar uma Pokedex com uma estilizada antiga. O projeto atualmente está em desenvolvimento e pode sofrer muitas alterações, o código atual é estável e pode conter muitos bugs.
